@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+li{
+    list-style: none;
+}
+
+li a{
+    text-decoration: none;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow-x: hidden;
+}
+
+
+.hero-banner{
+    width: 100%;
+    height: 105vh;
+    position: relative;
+    background-image: url('/assets/img/pexels-dorran-1643280.jpg');
+    background-size: cover;
+}
+
+
+.hero-banner .header{
+    padding: 0 100px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1{
+    position: relative;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.4em;
+    letter-spacing: 3px;
+    /* font-weight: 500; */
+}
+
+
+.header h1::before{
+    position: absolute;
+    bottom: -5px;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: white;
+}
+
+
+.header nav{
+    position: relative;
+    width: max-content;
+    height: 100%;
+}
+
+
+.header nav ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.header nav ul li a{
+    position: relative;
+    color: rgba(255, 255, 255, 0.807);
+    font-size: 0.80em;
+}
+
+
+.header nav ul li.active a::before{
+    position: absolute;
+    bottom: -5px;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color:  rgba(255, 255, 255, 0.807);
+}
+
+
+.text.center{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-banner .text.center{
+    width: 100%;
+    height: calc(100% - 60px);
+}
+
+.text h1{
+    color: #BD9D66;
+    text-transform: capitalize;
+    font-family: 'Herr Von Muellerhoff', cursive;
+    font-weight: 100;
+    font-size: 5em;
+}
+
+
+.hero-banner .text h2{
+    color: white;
+    text-transform: uppercase;
+    font-size: 2.3em;
+    font-weight: bold;
+    letter-spacing: 10px;
+    margin-top: -30px;
+}
+
+.hero-banner .text span{
+    color: rgba(255, 255, 255, 0.889);
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: 500;
+    letter-spacing: 3px;
+}
+
+main{
+    position: relative;
+    width: 100%;
+    height: max-content;
+}
+
+main section#story, main section#menu, main section#delight{
+    width: 100%;
+    height: 85vh;
+    padding: 0 100px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+
+main section#story img{
+    height: 350px;
+    object-fit: cover;
+}
+
+main section .text h2{
+    text-transform: uppercase;
+    font-size: 2.3em;
+    margin-top: -45px;
+}
+
+
+main section .text p{
+    text-align: center;
+    font-size: 0.75em;
+    line-height: 25px;
+}
+
+main section .text span, main section .text a{
+    color: #BD9D66;
+}
+
+main section .text span{
+    font-size: 2em;
+}
+
+main section .text a{
+    text-transform: uppercase;
+    margin-top: 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+
+main section#recipes, main section#blend{
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    background-image: url('/assets/img/pexels-rachel-claire-4992806.jpg');
+    background-size: cover;
+}
+
+main section#recipes h2, main section#blend h2{
+    color: white;
+    letter-spacing: 10px;
+}
+
+main section#menu .menu-image{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+main section#menu .menu-image img{
+    height: 170px;
+    object-fit: cover;
+}
+
+main section#delight .delight-image{
+    width: 50%;
+    display: flex;
+    gap: 60px;
+}
+
+
+
+main section#delight .delight-image img{
+    height: 350px;
+    width: 200px;
+    object-fit: cover;
+}
+
+footer{
+    position: relative;
+    width: 100%;
+    height: 45vh;
+    background-color: black;
+    padding: 0 100px;
+    padding-top: 60px;
+}
+
+footer .top{
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+footer .top .top-left, footer .top .top-right{
+    width: 50%;
+} 
+
+footer .top h1{
+    font-size: 1.1em;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+
+footer .top ul{
+    display: flex;
+    margin-top: 40px;
+}
+
+footer .top ul li{
+    width: 160px;
+    color: rgba(255, 255, 255, 0.815);
+    font-size: 0.80em;
+}
+
+footer .bottom{
+    width: 100%;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.050);
+    position: absolute;
+    left: 0;
+    padding: 0 100px;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+footer .bottom p{
+    font-size: 0.70em;
+    /* letter-spacing: 1px; */
+    color: white;
+}
