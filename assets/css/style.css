@@ -1,10 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
 
+
+:root{
+    --padding: 0 calc(100vw / 15);
+    --h1: calc(100vw / 12);
+    --h2: calc(100vw / 24);
+    --margin-text:  calc(-100vw / 25);
+}
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+}
+
+.reveal-right{
+    opacity: 0;
+    transform: translateX(-25px);
+}
+
+.reveal-left{
+    opacity: 0;
+    transform: translateX(25px);
+}
+
+.reveal-top{
+    opacity: 0;
+    transform: translateY(25px);
+}
+
+.reveal-bottom{
+    opacity: 0;
+    transform: translateY(-25px);
+}
+
+
+.reveal-visible{
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+    transition: 1s cubic-bezier(.54, .01, 0, .99);
 }
 
 li{
@@ -29,24 +64,26 @@ body{
     position: relative;
     background-image: url('/assets/img/pexels-dorran-1643280.jpg');
     background-size: cover;
+    background-position: 50% 50%;
 }
 
 
 .hero-banner .header{
-    padding: 0 100px;
+    padding: var(--padding);
     height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.header h1{
+.header .logo{
     position: relative;
     color: white;
     text-transform: uppercase;
     font-size: 1.4em;
     letter-spacing: 3px;
     /* font-weight: 500; */
+    z-index: 10000;
 }
 
 
@@ -60,11 +97,30 @@ body{
 }
 
 
+.header h1.black::before{
+    background-color: black;
+}
+
+
 .header nav{
     position: relative;
     width: max-content;
     height: 100%;
+    z-index: 100;
 }
+
+
+.header .menu{
+    position: relative;
+    width: 35px;
+    height: 40px;
+    background-color: transparent;
+    display: none;
+    z-index: 10000;
+}
+
+
+
 
 
 .header nav ul{
@@ -91,6 +147,92 @@ body{
     background-color:  rgba(255, 255, 255, 0.807);
 }
 
+@media screen and (max-width: 950px) {
+
+    .hero-banner{
+        height: 80vh;
+    }
+
+
+    .header h1.black{
+        color: black;
+    }
+
+    .header nav{
+        position: absolute;
+        top: -200%;
+        left: 0;
+        height: 65vh;
+        width: 100%;
+        display: block;
+        background-color: white;
+        color: black;
+        transition: 0.3s;
+    }
+
+    .header nav.active{
+        top: 0;
+    }
+
+
+    
+
+
+    .header nav ul{
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .header nav ul li a{
+        position: relative;
+        color: black;
+        font-size: 0.95em;
+        color: black;
+    }
+    
+    
+    .header .menu{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+    }
+
+
+    .header .menu.black .line{
+        background-color: black;
+    }
+
+    .header .menu .line{
+        position: relative;
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        border-radius: 2px;
+    }
+
+    .header .menu .line::before,
+    .header .menu .line::after{
+        position: absolute;
+        content: '';
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 2px;
+        background-color: inherit;
+    }
+
+
+    .header .menu .line::before{
+        top: -10px;
+    }
+
+    .header .menu .line::after{
+        top: 10px;
+    }
+}
+
+
 
 .text.center{
     height: 100%;
@@ -110,23 +252,24 @@ body{
     text-transform: capitalize;
     font-family: 'Herr Von Muellerhoff', cursive;
     font-weight: 100;
-    font-size: 5em;
+    font-size: var(--h1);
+    z-index: 0;
 }
 
 
 .hero-banner .text h2{
     color: white;
     text-transform: uppercase;
-    font-size: 2.3em;
+    font-size: var(--h2);
     font-weight: bold;
     letter-spacing: 10px;
-    margin-top: -30px;
+    margin-top: var(--margin-text);
 }
 
 .hero-banner .text span{
     color: rgba(255, 255, 255, 0.889);
     text-transform: uppercase;
-    font-size: 0.8em;
+    font-size: calc(100vw / 75);
     font-weight: 500;
     letter-spacing: 3px;
 }
@@ -139,11 +282,29 @@ main{
 
 main section#story, main section#menu, main section#delight{
     width: 100%;
-    height: 85vh;
-    padding: 0 100px;
+    min-height: 85vh;
+    padding: var(--padding);
     display: flex;
     align-items: center;
     gap: 50px;
+}
+
+
+@media screen and (max-width: 1050px) {
+    main section#story, main section#menu, main section#delight{
+        width: 100%;
+        min-height: 68vh;
+        flex-direction: column;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        justify-content: center;
+    }
+
+    main section#menu{
+        flex-direction: column-reverse;
+    }
+
+   
 }
 
 
@@ -152,10 +313,20 @@ main section#story img{
     object-fit: cover;
 }
 
+@media screen and (max-width: 650px) {
+    main section#story img{
+        width: 320px;
+        height: 190px;
+    }
+}
+
+
+
+
 main section .text h2{
     text-transform: uppercase;
-    font-size: 2.3em;
-    margin-top: -45px;
+    font-size: var(--h2);
+    margin-top: var(--margin-text);
 }
 
 
@@ -189,6 +360,14 @@ main section#recipes, main section#blend{
     background-size: cover;
 }
 
+
+@media screen and (max-width: 720px) {
+    main section#recipes, main section#blend{
+        height: 55vh;
+    }
+    
+}
+
 main section#recipes h2, main section#blend h2{
     color: white;
     letter-spacing: 10px;
@@ -198,6 +377,19 @@ main section#menu .menu-image{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
+}
+
+@media screen and (max-width: 590px) {
+    main section#menu .menu-image{
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    main section#menu .menu-image img{
+        width: 310px;
+        height: 200px;
+        object-fit: cover;
+    }
 }
 
 main section#menu .menu-image img{
@@ -212,6 +404,14 @@ main section#delight .delight-image{
 }
 
 
+@media screen and (max-width: 1050px) {
+    main section#delight .delight-image{
+        width: 100%;
+        justify-content: center;
+        gap: calc(100vw / 20);
+    }
+}
+
 
 main section#delight .delight-image img{
     height: 350px;
@@ -219,13 +419,46 @@ main section#delight .delight-image img{
     object-fit: cover;
 }
 
+@media screen and (max-width: 450px) {
+
+    .header h1{
+        font-size: 1.05em;
+    }
+
+
+
+    .header .menu{
+        width: 28px;
+    }
+
+    .header .menu .line::before{
+        top: -7px;
+    }
+
+    .header .menu .line::after{
+        top: 7px;
+    }
+
+    main section#delight .delight-image {
+        gap: 15px;
+    }
+
+    main section#delight .delight-image img{
+        height: 230px;
+        object-fit: cover;
+    }
+    
+}
+
 footer{
     position: relative;
     width: 100%;
     height: 45vh;
     background-color: black;
-    padding: 0 100px;
-    padding-top: 60px;
+    padding: var(--padding);
+    padding-top: 30px;
+    padding-bottom: 30px;
+
 }
 
 footer .top{
@@ -233,6 +466,9 @@ footer .top{
     justify-content: space-between;
     gap: 50px;
 }
+
+
+
 
 footer .top .top-left, footer .top .top-right{
     width: 50%;
@@ -251,6 +487,24 @@ footer .top ul{
     margin-top: 40px;
 }
 
+
+@media screen and (max-width: 950px) {
+    footer{
+        min-height: 75vh;
+        padding-bottom: 30px;
+    }
+    footer .top{
+        flex-direction: column;
+
+    }
+
+    footer .top ul{
+        flex-direction: column;
+        row-gap: 20px;
+        margin-top: 20px;
+    }
+}
+
 footer .top ul li{
     width: 160px;
     color: rgba(255, 255, 255, 0.815);
@@ -263,7 +517,7 @@ footer .bottom{
     background-color: rgba(255, 255, 255, 0.050);
     position: absolute;
     left: 0;
-    padding: 0 100px;
+    padding: var(--padding);
     bottom: 0;
     display: flex;
     justify-content: space-between;
@@ -271,8 +525,25 @@ footer .bottom{
 }
 
 
+
 footer .bottom p{
     font-size: 0.70em;
     /* letter-spacing: 1px; */
     color: white;
+}
+
+
+
+@media screen and (max-width: 720px){
+    footer .bottom{
+        font-size: 0.5em;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    footer .bottom p{
+        font-size: 0.70em;
+        /* letter-spacing: 1px; */
+        color: white;
+    }
 }

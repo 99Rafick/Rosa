@@ -13,7 +13,7 @@
 
     <div class="hero-banner">
         <div class="header">
-            <h1>Rosa</h1>
+            <h1 class="logo">Rosa</h1>
             <nav>
                 <ul>
                     <li class="active"><a href="">WELCOME</a></li>
@@ -23,9 +23,12 @@
                     <li><a href="">CONTACT</a></li>
                 </ul>
             </nav>
+            <div class="menu">
+                <div class="line"></div>
+            </div>
         </div>
 
-        <div class="text center">
+        <div class="text center reveal-bottom">
             <h1>Welcome</h1>
             <h2>The Rosa</h2>
             <div class="souligne"></div>
@@ -35,7 +38,7 @@
 
     <main>
         <section id="story">
-            <div class="text center">
+            <div class="text center reveal-right">
                 <h1>Discover</h1>
                 <h2>our story</h2>
                 <span>*</span>
@@ -43,11 +46,11 @@
                 <a href="#">About us</a>
             </div>
 
-            <img src="assets/img/pexels-tim-mossholder-2978020.jpg" alt="">
+            <img class="reveal-left" src="assets/img/pexels-tim-mossholder-2978020.jpg" alt="">
         </section>
 
         <section id="recipes">
-            <div class="text center">
+            <div class="text center reveal-bottom">
                 <h1>Fasteful</h1>
                 <h2>RECIPES</h2>
             </div>
@@ -55,13 +58,13 @@
 
         <section id="menu">
             <div class="menu-image">
-                <img src="/assets/img/pexels-roman-odintsov-4551106.jpg" alt="">
-                <img src="/assets/img/pexels-roman-odintsov-4551106.jpg" alt="">
-                <img src="/assets/img/pexels-roman-odintsov-4551106.jpg" alt="">
-                <img src="/assets/img/pexels-roman-odintsov-4551106.jpg" alt="">
+                <img class="reveal-right" src="/assets/img/pexels-roman-odintsov-4551106.jpg" alt="">
+                <img class="reveal-right" src="/assets/img/pexels-roman-odintsov-4551106.jpg" alt="">
+                <img class="reveal-right" src="/assets/img/pexels-roman-odintsov-4551106.jpg" alt="">
+                <img class="reveal-right" src="/assets/img/pexels-roman-odintsov-4551106.jpg" alt="">
             </div>
 
-            <div class="text center">
+            <div class="text center reveal-left">
                 <h1>Discover</h1>
                 <h2>MENU</h2>
                 <span>*</span>
@@ -72,7 +75,7 @@
 
 
         <section id="blend">
-            <div class="text center">
+            <div class="text center reveal-bottom">
                 <h1>The perfect</h1>
                 <h2>blend</h2>
             </div>
@@ -81,7 +84,7 @@
 
 
         <section id="delight">
-            <div class="text center">
+            <div class="text center reveal-left">
                 <h1>Culinary</h1>
                 <h2>Delight</h2>
                 <span>*</span>
@@ -90,8 +93,8 @@
             </div>
 
             <div class="delight-image">
-                <img src="/assets/img/pexels-leonardo-luz-14341093.jpg" alt="">
-                <img src="/assets/img/pexels-leonardo-luz-14341093.jpg" alt="">
+                <img class="reveal-right" src="/assets/img/pexels-leonardo-luz-14341093.jpg" alt="">
+                <img class="reveal-left" src="/assets/img/pexels-leonardo-luz-14341093.jpg" alt="">
             </div>
 
           
@@ -124,6 +127,56 @@
         </div>
     </footer>
 
+
+    <script>
+        
+        let logo = document.querySelector('.header h1')
+        let menu = document.querySelector('.menu');
+        let nav = document.querySelector('nav')
+        menu.addEventListener('click', () => {
+            nav.classList.toggle('active')
+            menu.classList.toggle('black')
+            logo.classList.toggle('black')
+
+        })
+
+
+        const ratio = .1
+        const option = {
+            root: null,
+            rootMargin: '0px',
+            threshold: ratio
+        }
+
+
+        const handleIntersect = function (entries, observer){
+            entries.forEach(function (entry){
+                if(entry.intersectionRatio > ratio){
+                    entry.target.classList.add('reveal-visible')
+                    observer.unobserve(entry.target)
+                }
+            })
+        }
+
+        const observer = new IntersectionObserver(handleIntersect, option)
+        document.querySelectorAll('.reveal-right').forEach(function(r) {
+            observer.observe(r)
+        })
+
+
+        document.querySelectorAll('.reveal-left').forEach(function(r) {
+            observer.observe(r)
+        })
+
+        document.querySelectorAll('.reveal-top').forEach(function(r) {
+            observer.observe(r)
+        })
+
+        document.querySelectorAll('.reveal-bottom').forEach(function(r) {
+            observer.observe(r)
+        })
+
+    </script>
 
 </body>
 </html>
