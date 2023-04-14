@@ -64,7 +64,7 @@ body{
     position: relative;
     background-image: url('/assets/img/pexels-dorran-1643280.jpg');
     background-size: cover;
-    background-position: 50% 50%;
+    background-position: 50% 0%;
     background-repeat: no-repeat
 }
 
